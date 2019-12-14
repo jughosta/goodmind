@@ -1,0 +1,62 @@
+enum EntryPeriod {
+  MORNING,
+  EVENING
+}
+
+enum EntryQuestion {
+  # morning
+  EXCITING_THING,
+  PERSON_TO_BE,
+  SOMEONE_WHO_NEEDS_ME,
+  STRESSFUL_SITUATION,
+  STRESSFUL_SITUATION_ANTIDOT,
+  SOMEONE_TO_THANK,
+  SOMEONE_TO_CONNECT_WITH,
+  VALUABLE_THING,
+  BOLD_ACTION,
+  DEFENITION_OF_SUCCESS,
+  TOP_GOALS,
+  # evening
+  SOMETHING_I_APPRECIATED,
+  SOMETHING_I_HANDLED_WELL,
+  SOMETHING_I_LEARNED,
+  SOMETHING_I_COULD_HAVR_IMPROVED,
+  SOMETHING_HELPED_TO_SOCIALIZED
+}
+
+type Entry {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  period: EntryPeriod!
+  question: EntryQuestion!
+  answer: String!
+}
+
+type Chapter {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  date: DateTime!
+  entries: [Entry!]! @relation(name: "ChapterEntries", onDelete: CASCADE)
+}
+
+type Journal {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  chapters: [Chapter!]! @relation(name: "JournalChapters", onDelete: CASCADE)
+}
+
+type User {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  email: String! @unique
+  activatedAt: DateTime
+  name: String!
+  journal: Journal! @relation(name: "UserJournal", onDelete: CASCADE)
+  password: String!
+  passwordResetToken: String
+  passwordResetExpiresAt: DateTime
+}

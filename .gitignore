@@ -1,0 +1,10 @@
+.idea
+
+# server
+server/node_modules
+server/.env
+server/src/generated
+
+# client
+client/node_modules
+client/.next
