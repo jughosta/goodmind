@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
@@ -19,7 +19,7 @@ const MUTATION_LOGIN = gql`
 `;
 
 const LoginForm = () => {
-  const [login, { _, loading, error }] = useMutation(MUTATION_LOGIN, {
+  const [login, { loading, error }] = useMutation(MUTATION_LOGIN, {
     refetchQueries: [{ query: QUERY_ME }],
     awaitRefetchQueries: true,
     onCompleted: () => {
@@ -29,14 +29,18 @@ const LoginForm = () => {
     }
   });
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
 
-        const elements = event.currentTarget.elements;
-
-        login({ variables: { email: elements[0].value, password: elements[1].value } });
+        login({ variables: {
+          email,
+          password
+        }});
       }}
     >
       {
@@ -52,6 +56,8 @@ const LoginForm = () => {
           <input
             required
             type="email"
+            value={email}
+            onChange={(event) => setEmail(event.currentTarget.value)}
           />
         </label>
       </p>
@@ -61,6 +67,8 @@ const LoginForm = () => {
           <input
             required
             type="password"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
           />
         </label>
       </p>

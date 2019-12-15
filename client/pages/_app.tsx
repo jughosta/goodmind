@@ -4,9 +4,15 @@ import { ApolloProvider } from 'react-apollo';
 import Page from '../components/Page';
 import withData from '../lib/withData';
 
-class MyApp extends App {
+interface WithApollo {
+  apollo: any
+}
+
+class MyApp extends App<WithApollo> {
   static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
+    let pageProps = {
+      query: {}
+    };
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }

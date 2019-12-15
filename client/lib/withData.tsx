@@ -6,7 +6,7 @@ import { endpoint } from '../config';
 function createClient({ headers }) {
   return new ApolloClient({
     uri: endpoint,
-    request: operation => {
+    request: async operation => {
       operation.setContext({
         fetchOptions: {
           credentials: 'include',

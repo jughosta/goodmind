@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
-import Header from '../components/Header';
-import Navigation from '../components/Navigation';
+import Header from './Header';
+import Navigation from './Navigation';
 
 const theme = {
 

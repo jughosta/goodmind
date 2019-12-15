@@ -46,7 +46,11 @@ const Settings = () => {
         <LogoutButton />
       </section>
     )
-    : '404 Not found';
+    : (
+        <div>
+            404 Not found
+        </div>
+      );
 };
 
 export default Settings;

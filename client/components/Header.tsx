@@ -4,16 +4,11 @@ import Router from 'next/router';
 
 import 'nprogress/nprogress.css';
 
-Router.onRouteChangeStart = () => {
-  NProgress.start();
-};
-Router.onRouteChangeComplete = () => {
-  NProgress.done();
-};
-
-Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+Router.ready(() => {
+  Router.events.on('routeChangeStart', () => NProgress.start());
+  Router.events.on('routeChangeComplete', () => NProgress.done());
+  Router.events.on('routeChangeError', () => NProgress.done());
+});
 
 const Header = ({ children }) => (
   <header>

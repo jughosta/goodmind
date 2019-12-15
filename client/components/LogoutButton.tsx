@@ -14,7 +14,7 @@ const MUTATION_LOGOUT = gql`
 `;
 
 const LogoutButton = () => {
-  const [logout, { _, loading, error }] = useMutation(MUTATION_LOGOUT, {
+  const [logout, { loading, error }] = useMutation(MUTATION_LOGOUT, {
     update(cache) {
       cache.writeQuery({
         query: QUERY_ME,
@@ -33,7 +33,7 @@ const LogoutButton = () => {
       <button
         type="button"
         disabled={loading}
-        onClick={logout}
+        onClick={() => logout()}
       >
         {loading ? 'Logging out...' : 'Logout'}
       </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
@@ -26,7 +26,7 @@ const MUTATION_SIGNUP = gql`
 `;
 
 const SignUpForm = () => {
-  const [signup, { _, loading, error }] = useMutation(MUTATION_SIGNUP, {
+  const [signup, { loading, error }] = useMutation(MUTATION_SIGNUP, {
     refetchQueries: [{ query: QUERY_ME }],
     awaitRefetchQueries: true,
     onCompleted: () => {
@@ -36,14 +36,20 @@ const SignUpForm = () => {
     }
   });
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
 
-        const elements = event.currentTarget.elements;
-
-        signup({ variables: { email: elements[0].value, password: elements[1].value, name: elements[2].value } });
+        signup({ variables: {
+            email,
+            password,
+            name
+        }});
       }}
     >
       {
@@ -55,28 +61,34 @@ const SignUpForm = () => {
       }
       <p>
         <label>
-          Email
-          <input
-            required
-            type="email"
-          />
+            Email
+            <input
+                required
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.currentTarget.value)}
+            />
         </label>
       </p>
       <p>
         <label>
-          Password
-          <input
-            required
-            type="password"
-          />
+            Password
+            <input
+                required
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.currentTarget.value)}
+            />
         </label>
       </p>
       <p>
         <label>
-          Name
-          <input
-            type="text"
-          />
+            Password
+             <input
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.currentTarget.value)}
+             />
         </label>
       </p>
       <button type="submit" disabled={loading}>
