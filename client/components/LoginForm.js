@@ -2,6 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
+import { QUERY_ME } from './Settings';
+
 const MUTATION_LOGIN = gql`
   mutation MUTATION_LOGIN($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -10,20 +12,16 @@ const MUTATION_LOGIN = gql`
       email
       journal {
           id
-          chapters {
-              id
-              entries {
-                  id
-                  question
-              }
-          }
       }
     }
   }
 `;
 
 const LoginForm = () => {
-  const [login, { _, loading, error }] = useMutation(MUTATION_LOGIN);
+  const [login, { _, loading, error }] = useMutation(MUTATION_LOGIN, {
+    refetchQueries: [{ query: QUERY_ME }],
+    awaitRefetchQueries: true
+  });
 
   return (
     <form

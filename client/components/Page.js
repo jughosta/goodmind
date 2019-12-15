@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
+import Header from '../components/Header';
+import Navigation from '../components/Navigation';
+
 const theme = {
 
 };
@@ -25,6 +28,9 @@ class Page extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
+        <Header>
+          <Navigation />
+        </Header>
         {this.props.children}
       </ThemeProvider>
     );
