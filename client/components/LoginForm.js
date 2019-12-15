@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+import Router from 'next/router';
 
 import { QUERY_ME } from './Settings';
 
@@ -20,7 +21,12 @@ const MUTATION_LOGIN = gql`
 const LoginForm = () => {
   const [login, { _, loading, error }] = useMutation(MUTATION_LOGIN, {
     refetchQueries: [{ query: QUERY_ME }],
-    awaitRefetchQueries: true
+    awaitRefetchQueries: true,
+    onCompleted: () => {
+      Router.push({
+        pathname: '/'
+      });
+    }
   });
 
   return (

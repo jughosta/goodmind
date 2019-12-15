@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+import Router from 'next/router';
 
 import { QUERY_ME } from './Settings';
 
@@ -18,6 +19,11 @@ const LogoutButton = () => {
       cache.writeQuery({
         query: QUERY_ME,
         data: { me: null },
+      });
+    },
+    onCompleted: () => {
+      Router.push({
+        pathname: '/'
       });
     }
   });
