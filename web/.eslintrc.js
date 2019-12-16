@@ -27,7 +27,15 @@ module.exports = {
     'comma-dangle': 0,
     'arrow-parens': 0,
     'import/extensions': 0,
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.tsx'] }]
+    'operator-linebreak': 0,
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.tsx'] }],
+    'jsx-a11y/anchor-is-valid': [
+      1, {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ]
   },
   settings: {
     'import/resolver': {

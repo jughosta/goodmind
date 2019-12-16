@@ -1,3 +1,4 @@
+import React from 'react';
 import App from 'next/app';
 import { ApolloProvider } from 'react-apollo';
 
@@ -26,7 +27,7 @@ class MyApp extends App<WithApollo> {
     return (
       <ApolloProvider client={apollo}>
         <Page>
-          <Component {...pageProps} />
+          <Component {...pageProps} /> { /* eslint-disable-line  react/jsx-props-no-spreading, react/jsx-one-expression-per-line, max-len */ }
         </Page>
       </ApolloProvider>
     );
