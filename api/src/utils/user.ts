@@ -1,4 +1,4 @@
-function excludePrivateFields(user) {
+export function excludePrivateFields(user) {
   const me = {
     ...user
   };
@@ -9,7 +9,3 @@ function excludePrivateFields(user) {
 
   return me;
 }
-
-module.exports = {
-  excludePrivateFields
-};

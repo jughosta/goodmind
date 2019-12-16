@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { excludePrivateFields } = require('../utils/user');
+import * as bcrypt from 'bcryptjs';
+import * as jwt from 'jsonwebtoken';
+import { excludePrivateFields } from '../utils/user';
 
 const COOKIE_TOKEN_NAME = 'token';
 const COOKIE_TOKEN_MAX_AGE = 1000 * 60 * 60 * 24 * 100; // 100 days cookie
@@ -76,4 +76,4 @@ const Mutations = {
   }
 };
 
-module.exports = Mutations;
+export default Mutations;

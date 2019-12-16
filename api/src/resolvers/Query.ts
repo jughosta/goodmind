@@ -1,4 +1,4 @@
-const { excludePrivateFields } = require('../utils/user');
+import { excludePrivateFields } from '../utils/user';
 
 const Query = {
   async me(parent, args, ctx, info) {
@@ -17,4 +17,4 @@ const Query = {
   }
 };
 
-module.exports = Query;
+export default Query;

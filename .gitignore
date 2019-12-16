@@ -1,9 +1,9 @@
 .idea
 
 # server
-server/node_modules
-server/.env
-server/src/generated
+api/node_modules
+api/.env
+api/src/generated
 
 # client
 client/node_modules
