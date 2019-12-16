@@ -42,8 +42,7 @@ const LogoutButton = () => {
           error.message
       }
     </section>
-  )
+  );
 };
 
 export default LogoutButton;
-

@@ -45,11 +45,13 @@ const SignUpForm = () => {
       onSubmit={event => {
         event.preventDefault();
 
-        signup({ variables: {
+        signup({
+          variables: {
             email,
             password,
             name
-        }});
+          }
+        });
       }}
     >
       {
@@ -62,33 +64,33 @@ const SignUpForm = () => {
       <p>
         <label>
             Email
-            <input
-                required
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.currentTarget.value)}
-            />
+          <input
+            required
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
         </label>
       </p>
       <p>
         <label>
             Password
-            <input
-                required
-                type="password"
-                value={password}
-                onChange={(event) => setPassword(event.currentTarget.value)}
-            />
+          <input
+            required
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
         </label>
       </p>
       <p>
         <label>
             Password
-             <input
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.currentTarget.value)}
-             />
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.currentTarget.value)}
+          />
         </label>
       </p>
       <button type="submit" disabled={loading}>

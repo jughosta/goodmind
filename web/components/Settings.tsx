@@ -39,19 +39,25 @@ const Settings = () => {
     ? (
       <section>
         {
-          user.name &&
-            <div>Name: {user.name}</div>
-        }
-        <div>Email: {user.email}</div>
+          user.name && (
+            <div>
+Name:
+              {user.name}
+            </div>
+          )
+}
+        <div>
+Email:
+          {user.email}
+        </div>
         <LogoutButton />
       </section>
     )
     : (
-        <div>
+      <div>
             404 Not found
-        </div>
-      );
+      </div>
+    );
 };
 
 export default Settings;
-

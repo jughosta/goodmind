@@ -37,10 +37,12 @@ const LoginForm = () => {
       onSubmit={event => {
         event.preventDefault();
 
-        login({ variables: {
-          email,
-          password
-        }});
+        login({
+          variables: {
+            email,
+            password
+          }
+        });
       }}
     >
       {
