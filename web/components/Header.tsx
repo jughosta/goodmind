@@ -10,7 +10,11 @@ Router.ready(() => {
   Router.events.on('routeChangeError', () => NProgress.done());
 });
 
-const Header = ({ children }) => (
+type Props = {
+  children: any
+}
+
+const Header = ({ children }: Props) => (
   <header>
     {children}
   </header>

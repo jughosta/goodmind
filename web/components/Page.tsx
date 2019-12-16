@@ -24,7 +24,11 @@ createGlobalStyle`
   }
 `;
 
-const Page = ({ children }) => (
+type Props = {
+  children: any
+}
+
+const Page = ({ children }: Props) => (
   <ThemeProvider theme={theme}>
     <Header>
       <Navigation />
