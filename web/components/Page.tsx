@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+/* eslint-disable no-unused-expressions */
+
+import React from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import Header from './Header';
 import Navigation from './Navigation';
 
-const theme = {
-
-};
+const theme = {};
 
 createGlobalStyle`
   html {
@@ -24,17 +24,13 @@ createGlobalStyle`
   }
 `;
 
-class Page extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <Header>
-          <Navigation />
-        </Header>
-        {this.props.children}
-      </ThemeProvider>
-    );
-  }
-}
+const Page = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <Header>
+      <Navigation />
+    </Header>
+    {children}
+  </ThemeProvider>
+);
 
 export default Page;
