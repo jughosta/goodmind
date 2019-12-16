@@ -24,6 +24,16 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    'comma-dangle': 0
+    'comma-dangle': 0,
+    'arrow-parens': 0,
+    'import/extensions': 0,
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.tsx'] }]
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
+  }
 };
